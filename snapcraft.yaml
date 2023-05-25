@@ -56,4 +56,14 @@ parts:
     organize:
       snap/upscaler/current/usr: usr  
     
- 
+  real-esrgan:
+    source: https://github.com/xinntao/Real-ESRGAN-ncnn-vulkan.git
+    plugin: cmake
+    # https://github.com/xinntao/Real-ESRGAN-ncnn-vulkan
+    # https://gitlab.gnome.org/World/Upscaler
+    override-build: |
+      craftctl default
+      install -Dm755 realesrgan-ncnn-vulkan -t /app/bin
+      mkdir /app/bin/models; mv *.{bin,param} /app/bin/models
+  
+  
